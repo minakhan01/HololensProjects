@@ -54,6 +54,7 @@ public class BallManager : MonoBehaviour
         keywordRecognizer = new KeywordRecognizer(keywordCollection.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
+       randomForce();
     }
 
     void OnDestroy()
@@ -128,7 +129,12 @@ public class BallManager : MonoBehaviour
 
     void ApplyForce(PhraseRecognizedEventArgs args)
     {
-        ball.GetComponent<Rigidbody>().AddForce(transform.forward * 5);
+        //ball.GetComponent<Rigidbody>().AddForce(transform.forward * 5);
+        ball.GetComponent<Rigidbody>().AddForce(ball.transform.forward * 4, ForceMode.Impulse);
+    }
+
+    void randomForce() {
+        ball.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 4, ForceMode.Impulse);
     }
 
     void BounceBall(PhraseRecognizedEventArgs args)

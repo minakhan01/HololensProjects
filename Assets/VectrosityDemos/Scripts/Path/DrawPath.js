@@ -18,8 +18,8 @@ function Start () {
 	pathLine.color = Color.green;
 	pathLine.textureScale = 1.0;
 	
-	MakeBall();
-	SamplePoints (ball.transform);
+	// MakeBall();
+	SamplePoints (transform);
 }
 
 function MakeBall () {
