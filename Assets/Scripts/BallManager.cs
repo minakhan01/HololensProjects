@@ -28,7 +28,7 @@ public class BallManager : MonoBehaviour
     {
         oldVector = new Vector3(0, 0, 0);
         ballStopped = false;
-        // ball.SetActive(false);
+        ball.SetActive(false);
         // cube.SetActive(false);
 
         keywordCollection = new Dictionary<string, KeywordAction>();
@@ -88,7 +88,7 @@ public class BallManager : MonoBehaviour
 
     private void HideGraph(PhraseRecognizedEventArgs args)
     {
-        Debug.Log("show canvas called");
+        Debug.Log("hide canvas called");
         canvas.SetActive(false);
     }
 
@@ -144,6 +144,6 @@ public class BallManager : MonoBehaviour
     void BounceBall(PhraseRecognizedEventArgs args)
     {
         Debug.Log("bounce ball");
-        ball.GetComponent<Rigidbody>().AddForce(transform.up * 50);
+        ball.GetComponent<Rigidbody>().AddForce(Camera.main.transform.up * 10);
     }
 }
