@@ -18,13 +18,15 @@ public class BallManager : MonoBehaviour
     public GameObject canvas;
     // public GameObject cube;
 
+    Vector3 oldVector;
+
     // Defines which function to call when a keyword is recognized.
     delegate void KeywordAction(PhraseRecognizedEventArgs args);
     Dictionary<string, KeywordAction> keywordCollection;
     // Use this for initialization
     void Start()
     {
-
+        oldVector = new Vector3(0, 0, 0);
         ballStopped = false;
         // ball.SetActive(false);
         // cube.SetActive(false);
@@ -87,13 +89,15 @@ public class BallManager : MonoBehaviour
     private void HideGraph(PhraseRecognizedEventArgs args)
     {
         Debug.Log("show canvas called");
-        canvas.SetActive(true);
+        canvas.SetActive(false);
     }
 
     public void StopBall()
     {
-        ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
+        // oldVector = ball.GetComponent<Rigidbody>().velocity;
+        //ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
         ballStopped = true;
+        Time.timeScale = 0;
     }
 
     private void PlayBallCommand(PhraseRecognizedEventArgs args)
@@ -104,8 +108,8 @@ public class BallManager : MonoBehaviour
 
     public void PlayBall()
     {
-        ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        // Time.timeScale = 1;
+       // ball.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        Time.timeScale = 1;
         ballStopped = false;
     }
 
