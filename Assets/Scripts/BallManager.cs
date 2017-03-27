@@ -123,6 +123,8 @@ public class BallManager : MonoBehaviour
     {
         Debug.Log("place ball");
         ball.SetActive(true);
+        ball.transform.position = Camera.main.transform.position + Camera.main.transform.forward; // Start to drop it in front of the camera
+        
         // cube.SetActive(true);
     }
 
@@ -134,6 +136,9 @@ public class BallManager : MonoBehaviour
     void ApplyForce(PhraseRecognizedEventArgs args)
     {
         //ball.GetComponent<Rigidbody>().AddForce(transform.forward * 5);
+        if (Time.timeScale == 0) {
+            Time.timeScale = 1;
+        }
         ball.GetComponent<Rigidbody>().AddForce(ball.transform.forward * 4, ForceMode.Impulse);
     }
 

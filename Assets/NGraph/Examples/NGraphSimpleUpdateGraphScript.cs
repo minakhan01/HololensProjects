@@ -49,6 +49,6 @@ public class NGraphSimpleUpdateGraphScript : MonoBehaviour
       Vector3 mPlayerVelocity = mPlayerRigidbody.velocity;
       mPlotX.UpdateValue = mPlayerVelocity.x;
       mPlotY.UpdateValue = mPlayerVelocity.y;
-      mPlotZ.UpdateValue = mPlayer.gameObject.transform.position.y;
+      mPlotZ.UpdateValue = mPlayerVelocity.z;
    }
 }

@@ -24,6 +24,8 @@ namespace Academy.HoloToolkit.Unity
 
         public Vector3 ManipulationPosition { get; private set; }
 
+        public GameObject forceCanvas;
+
         void Awake()
         {
             Debug.Log("Awake");
@@ -177,6 +179,7 @@ namespace Academy.HoloToolkit.Unity
                 HandsManager.Instance.FocusedGameObject.SendMessageUpwards("PerformManipulationStart", position);
 
                 sphere.GetComponent<GestureInput>().updatePosition(position);
+                forceCanvas.GetComponent<GestureInput>().updatePosition(position);
             }
         }
 
@@ -192,6 +195,7 @@ namespace Academy.HoloToolkit.Unity
                 HandsManager.Instance.FocusedGameObject.SendMessageUpwards("PerformManipulationUpdate", position);
 
                 sphere.GetComponent<GestureInput>().updatePosition(position);
+                forceCanvas.GetComponent<GestureInput>().updatePosition(position);
             }
         }
 
@@ -200,6 +204,7 @@ namespace Academy.HoloToolkit.Unity
             Debug.Log("manipulation completed");
             IsManipulating = false;
             sphere.GetComponent<GestureInput>().updateFinished(position);
+            forceCanvas.GetComponent<GestureInput>().updateFinished(position);
         }
 
         private void ManipulationRecognizer_ManipulationCanceledEvent(InteractionSourceKind source, Vector3 position, Ray ray)
