@@ -16,7 +16,7 @@ public class linTestScript : MonoBehaviour {
 	// Update is called once per frame
 	void Start () {
         Vector3 ArrowOrigin = transform.position;
-        Vector3 ArrowTarget = transform.position + new Vector3(0.1f,0.1f,0 );
+        Vector3 ArrowTarget = transform.position + new Vector3(0.2f,0.2f,0 );
         cachedLineRenderer = this.GetComponent<LineRenderer>();
         cachedLineRenderer.widthCurve = new AnimationCurve(
             new Keyframe(0, 0.1f)
